@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Apartado A</title>
+    <style>
+
+        *{
+            margin: 3px;
+            padding: 1px;
+        }
+
+        table {
+            border: 1px solid black;
+            margin: 0;
+            padding: 0;
+        }
+
+      .container {        
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      tr {
+        border: 1px solid black;
+      }
+
+      td {
+        border: 1px solid black;
+        border-left-width: 0px;
+        border-right-width: 0px;
+        border-bottom: 0px;
+        padding-bottom: 0px;
+        padding-right: 0px;
+        padding-left: 0px;
+      }
+
+      td.tdHead {
+        border-top: 0px;
+      }
+
+      th {
+        background-color: rgb(236, 19, 15);
+        color: white;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        font-size: 16px;
+        letter-spacing: 0.5px;
+      }
+
+      button {
+        background-color: rgb(143, 178, 244);
+        color: rgb(185, 0, 0);
+        font-family: inherit;      
+        border-radius: 5px 5px 5px 5px; 
+        border: 2px solid rgb(101, 97, 213);
+        font-size: 16px;
+      }
+
+      button:hover {
+        background-color: rgb(101, 97, 213);
+        border: 2px solid rgb(143, 178, 244);
+        color: rgb(243, 243, 243);
+        box-shadow:  0px 5px 15px rgb(143, 178, 244);
+      }
+
+      input, select {
+        border: 1px solid cornflowerblue;
+        /* background-color: rgb(255, 252, 225); */
+        background-image: linear-gradient(to right, pink, lightgreen);
+      }
+
+      option {
+        background-color: rgb(242, 223, 241);
+      }
+
+      .label-movil, .label-email, .label-docu {
+        margin-right: 27px;
+      }
+
+      .label-nombre {
+        margin-right: 14px;
+      }
+
+      .label-cp {
+        margin-right: 46px;
+      }
+      
+      #resultado-total b{
+        background-color: rgb(182, 251, 228);
+        
+      }
+
+      #content {
+        background-color: rgb(247, 188, 208);
+        color: rgb(255, 0, 0);
+      }
+
+    </style>
+  </head>
+  <body>
+
+    <div class="container">
+        <form action=""  method="">
+            <table>
+                <thead>
+                    <tr>
+                        <th>
+                           Crear mi cuenta de perfil
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="tdHead">
+                            <label for="" class="label-docu">Tipo de documento :</label>
+                            <select name="tipoDoc" id="tipoDoc">
+                                <option value="DNI">1-DNI</option>
+                                <option value="PASAPORTE">2-Pasaporte</option>
+                                <option value="NIE">3-NIE</option>
+                                <option value="TARJETA_C">4-Tarjeta r.comunitario</option>
+                            </select>
+                            <span id="resultadoTipoDoc"></span>
+                        </td>                        
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="">Número de documento :</label>
+                            <input type="text" id="numDocu" value="47813332a" required>
+                            <span id="resultadoNumDocu"></span>
+                        </td>                        
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="">Usuario :</label>
+                            <input type="text" id="usuario" value="usuario123" required>
+                            <span id="resultadoUsuario"></span>
+                            <label for="">Password :</label>
+                            <input type="password" id="password" value="123456" required>
+                            <span id="resultadoPassword"></span>                       
+                        </tr>
+                    <tr>
+                        <td>
+                            <label for="" class="label-email">Email :</label>
+                            <input type="email" id="email" value="ejemplo@ejemplo.com" required>
+                            <span id="resultadoEmail"></span>
+                        </td>                        
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="" class="label-cp">CP :</label>
+                            <input type="number" id="codigo-postal" value="28080" required>
+                            <span id="resultadoCP"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="">Apellidos :</label>
+                            <input type="text" id="apellido" value="Molina" required>
+                            <span id="resultadoApellido"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="" class="label-nombre">Nombre :</label>
+                            <input type="text" id="nombre" value="Antonio" required>
+                            <span id="resultadoNombre"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="" class="label-movil">Móvil :</label>
+                            <input type="number" id="movil" value="657575757" required>
+                            <span id="resultadoMovil"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="">Dirección :</label>
+                            <input type="text" id="direccion" value="c/ madrid nº10" required>
+                            <span id="resultadoDireccion"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="">Ciudad de Residencia Habitual :</label>
+                            <input type="text" id="residenciaH" value="Madrid" required>
+                            <span id="resultadoResidenciaH"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="display: flex;justify-content: space-around;">
+                            <button type="button" id="validar" name="validar" onclick="validarNacional()"><b>Crear Cuenta</b></button>
+                            <button type="reset" onclick="location.reload()"><b>Limpiar</b></button>
+                        </td>                      
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+    <div id="resultado-total" class="container"></div>
+<script src="./main.js"></script>
+  </body>
+</html>
