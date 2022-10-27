@@ -1,6 +1,6 @@
 function validarNacional() {
 
-    const codigoP = /^\d{5}$/; // 5 numeros.
+    const codigoP = /^\d{4,5}$/; // 4 ó 5 numeros.
     const correo = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/; // numeros y letras @ y un . 
     const usuario = /^[a-zA-Z0-9\_\-]{4,16}$/; // Letras, numeros, guion y guion_bajo.
     const password = /^.{4,12}$/;  // 4 a 12 digitos.
@@ -88,10 +88,11 @@ function validarNacional() {
 
     // **********  CODIGO POSTAL ***********
     let cp = document.getElementById('codigo-postal');
-    const resCP = document.getElementById('resultadoCP');
+    const resCP = document.getElementById('resultadoCP');    
 
     if (codigoP.test(cp.value)) {
         resCP.innerHTML = "<p style='display: inherit;'>✅</p>"
+        
     }
     else {
         resCP.innerHTML = "<p style='background:pink; color:red;display: inherit;'>❌(maximo 5 numeros)</p>"
@@ -187,8 +188,8 @@ function validarNacional() {
                         </td>                        
                     </tr>
                     <tr>
-                        <td>
-                            <label for="">CP : <b>${cp.value}</b></label>
+                        <td> <!–– Con padStart(5, 0) añadimos un cero a la izquierda si el número tiene menos de 5 digitos  ––> 
+                            <label for="">CP : <b>${cp.value.padStart(5, 0)}</b></label>
                         </td>
                     </tr>
                     <tr>
@@ -218,7 +219,7 @@ function validarNacional() {
                     </tr>
                     <tr>
                     <td style="display: flex;justify-content: space-around;">
-                        <button type="reset" onclick="location.reload()"><b>Limpiar</b></button>
+                        <button id="btn-resul" type="reset" onclick="location.reload()">Limpiar 🧹</button>
                     </td>                      
                 </tr>                    
                 </tbody>
@@ -226,7 +227,7 @@ function validarNacional() {
         `       
         let x = document.getElementById('validar');
         x.style.display = 'none';
-}else{
+}else{ // Si alguna valicación esta mal pintamos un div con la imagen del robot
     let div = document.createElement('div');
     div.id = 'content';
     div.className = 'container';
@@ -237,16 +238,15 @@ function validarNacional() {
             x.style.display = 'none';
         }
     
-    let text = document.createTextNode(`RELLENALO BIEN POR FAVOR `);
-   //if visibility or display : none , on click display : block
+    let text = document.createTextNode(` `);
+  
     div.appendChild(text);
     div.innerHTML = `<br><img src="./img/error-no-es-fracaso.jpg" alt="" />`
-   
-    // const botonFail = document.getElementById('validar');
-   
+
+    // Metemos en el body el div con appenChild y lo borramos en 5 segundos con SetTimeout
     document.body.appendChild(div);
     setTimeout(() => {
     document.body.removeChild(div);
-    }, 5000);    
+    }, 599000);    
 }
 }
