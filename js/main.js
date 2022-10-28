@@ -6,7 +6,7 @@ function validarNacional() {
     const password = /^.{4,12}$/;  // 4 a 12 digitos.
     const nomApe = /^[a-zA-ZÀ-ÿ\s]{1,40}$/; // Letras y espacios, pueden llevar acentos.
     const telefono = /^[678]\d{8}$/; // Empezando por 6-7-8 y 9 numeros.
-    const ubicacion = /^[a-zA-Z0-9\_\-]{4,25}$/; // Letras, numeros, guion y guion_bajo.
+    const ubicacion = /^[a-zA-Z0-9\_\-\s\/\º]{4,25}$/; // Letras, numeros, guion y guion_bajo.
     const residencia = /^[a-zA-ZÀ-ÿ\s]{1,20}$/; // Letras y espacios, pueden llevar acentos.
     const dni = /^[0-9]{8}[A-Z-a-z]$/; // ocho numeros  y letra al final
     const pasaporte = /^[A-Z-a-z]{3}[0-9]{6}[A-Z-a-z]?$/; // 3 letras y 6 numeros letras adicionales al final.
@@ -21,29 +21,29 @@ function validarNacional() {
     let numDocu = document.getElementById('numDocu');
     const resNumDocu = document.getElementById('resultadoNumDocu');
 
-    if (tipoDoc.value == 'DNI') {
+    if (tipoDoc.value == 'DNI'){
         if (dni.test(numDocu.value)) {
             resNumDocu.innerHTML = "<p style='display: inherit;'>✅</p>"
         }
         else {
             resNumDocu.innerHTML = "<p style='background:pink; color:red;display: inherit;'>❌ (nº de dni incorrecto)</p>"
         }
-    } else if (tipoDoc.value == 'PASAPORTE') {
+    }else if (tipoDoc.value == 'PASAPORTE') {
         if (pasaporte.test(numDocu.value)) {
             resNumDocu.innerHTML = "<p style='display: inherit;'>✅</p>"
         }
         else {
             resNumDocu.innerHTML = "<p style='background:pink; color:red;display: inherit;'>❌ (3 letras y 6 numeros)</p>"
         }
-    } else if (tipoDoc.value == 'NIE') {
+    }else if (tipoDoc.value == 'NIE') {
         if (nie.test(numDocu.value)) {
             resNumDocu.innerHTML = "<p style='display: inherit;'>✅</p>"
         }
         else {
             resNumDocu.innerHTML = "<p style='background:pink; color:red;display: inherit;'>❌ (nº de nie incorrecto)</p>"
         }
-    } else if (tipoDoc.value == 'TARJETA_C') {
-        if (usuario.test(numDocu.value)) {
+    }else if (tipoDoc.value == 'TARJETA_C') {
+        if (nie.test(numDocu.value)) {
             resNumDocu.innerHTML = "<p style='display: inherit;'>✅</p>"
         }
         else {
@@ -51,9 +51,9 @@ function validarNacional() {
         }
     } else {
         resNumDocu.innerHTML = "<p style='background:pink; color:red;display: inherit;'>Algo salió mal intentalo de nuevo</p>"
-    }
+    }   
 
-// **********  USUARIO ***********
+    // **********  USUARIO ***********
     let usuario1 = document.getElementById('usuario');
     const resUsuario = document.getElementById('resultadoUsuario');
 
@@ -64,7 +64,7 @@ function validarNacional() {
         resUsuario.innerHTML = "<p style='background:pink; color:red;display: inherit;'>❌</p>"
     }
 
-// **********  PASSWORD ***********
+    // **********  PASSWORD ***********
     let password1 = document.getElementById('password');
     const resPassword = document.getElementById('resultadoPassword');
 
@@ -75,7 +75,7 @@ function validarNacional() {
         resPassword.innerHTML = "<p style='background:pink; color:red;display: inherit;'>❌</p>"
     }
 
-// ************** EMAIL ****************
+    // ************** EMAIL ****************
     let email = document.getElementById('email');
     const resEmail = document.getElementById('resultadoEmail');
 
@@ -86,19 +86,19 @@ function validarNacional() {
         resEmail.innerHTML = "<p style='background:pink; color:red;display: inherit;'>❌(Email incorrecto)</p>"
     }
 
-// **********  CODIGO POSTAL ***********
+    // **********  CODIGO POSTAL ***********
     let cp = document.getElementById('codigo-postal');
-    const resCP = document.getElementById('resultadoCP');
+    const resCP = document.getElementById('resultadoCP');    
 
     if (codigoP.test(cp.value)) {
         resCP.innerHTML = "<p style='display: inherit;'>✅</p>"
-
+        
     }
     else {
         resCP.innerHTML = "<p style='background:pink; color:red;display: inherit;'>❌(maximo 5 numeros)</p>"
     }
 
-// **********  APELLIDO ***********
+    // **********  APELLIDO ***********
     let apellido = document.getElementById('apellido');
     const resApellido = document.getElementById('resultadoApellido');
 
@@ -109,7 +109,7 @@ function validarNacional() {
         resApellido.innerHTML = "<p style='background:pink; color:red;display: inherit;'>❌ Apellido invalido (solo letras)</p>"
     }
 
-// **********  NOMBRE ***********
+    // **********  NOMBRE ***********
     let nombre1 = document.getElementById('nombre');
     const resNombre = document.getElementById('resultadoNombre');
 
@@ -120,29 +120,29 @@ function validarNacional() {
         resNombre.innerHTML = "<p style='background:pink; color:red;display: inherit;'>❌ Nombre invalido (solo letras)</p>"
     }
 
-// **********  MOVIL ***********
+    // **********  MOVIL ***********
     let movil = document.getElementById('movil');
     const resMovil = document.getElementById('resultadoMovil');
 
     if (telefono.test(movil.value)) {
         resMovil.innerHTML = "<p style='display: inherit;'>✅</p>"
     }
-    else {
-        resMovil.innerHTML = "<p style='background:pink; color:red;display: inherit;'>❌ (necesita 9 digitos y empieza por 6-7-8 )</p>"
+    else {        
+        resMovil.innerHTML = "<p style='background:pink; color:red;display: inherit;'>❌ (necesita 9 digitos y empieza por 86-7-8 )</p>"
     }
 
-// **********  DIRECCION ***********
+    // **********  DIRECCION ***********
     let direccion = document.getElementById('direccion');
     const resDireccion = document.getElementById('resultadoDireccion');
 
-    if (usuario.test(ubicacion.value)) {
+    if (ubicacion.test(direccion.value)) {
         resDireccion.innerHTML = "<p style='display: inherit;'>✅</p>"
     }
     else {
         resDireccion.innerHTML = "<p style='background:pink; color:red;display: inherit;'>❌</p>"
     }
 
-// **********  CIUDAD DE RESIDENCIA ***********
+    // **********  CIUDAD DE RESIDENCIA ***********
     let residenciaH = document.getElementById('residenciaH');
     const resResidenciaH = document.getElementById('resultadoResidenciaH');
 
@@ -153,10 +153,11 @@ function validarNacional() {
         resResidenciaH.innerHTML = "<p style='background:pink; color:red;display: inherit;'>❌</p>"
     }
 
-    if (usuario.test(usuario1.value) && password.test(password1.value) && correo.test(email.value) && codigoP.test(cp.value) && nomApe.test(apellido.value) && nomApe.test(nombre1.value) && telefono.test(movil.value) && usuario.test(ubicacion.value) && residencia.test(residenciaH.value)) {
+    // VALIDACIÓN si todos los campos son correctos  pinta el resultado !!!
+    if(usuario.test(usuario1.value) && password.test(password1.value) && correo.test(email.value) && codigoP.test(cp.value) && nomApe.test(apellido.value) && nomApe.test(nombre1.value) && telefono.test(movil.value) && ubicacion.test(direccion.value) && residencia.test(residenciaH.value)){
 
-        const resultadoTotal = document.getElementById('resultado-total');
-        resultadoTotal.innerHTML = `    
+    const resultadoTotal = document.getElementById('resultado-total');
+    resultadoTotal.innerHTML = `    
             <table>
                 <thead>
                     <tr>
@@ -223,13 +224,29 @@ function validarNacional() {
                 </tr>                    
                 </tbody>
             </table>
-        `
+        `       
         let x = document.getElementById('validar');
         x.style.display = 'none';
+}else{ // Si alguna valicación esta mal pintamos un div con la imagen del robot
+    let div = document.createElement('div');
+    div.id = 'content';
+    div.className = 'container';
 
-    } else {        
-        validarKo();               
-    }    
+    div.style.visibility = 'visible';
+        if (div.style.visibility == 'visible') {
+            let x = document.getElementById('validar');
+            x.style.display = 'none';
+        }
+    
+    let text = document.createTextNode(` `);
+  
+    div.appendChild(text);
+    div.innerHTML = `<br><img src="./img/error-no-es-fracaso.jpg" alt="" />`
+
+    // Metemos en el body el div con appenChild y lo borramos en 5 segundos con SetTimeout
+    document.body.appendChild(div);
+    setTimeout(() => {
+    document.body.removeChild(div);
+    }, 5000);    
 }
-
-
+}
